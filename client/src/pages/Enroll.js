@@ -20,20 +20,21 @@ const Enroll = () => {
     choice.append("date", date);
 
     axios
-      .post("/api/enroll/", choice)
+      .post("http://localhost:5001/api/enroll/enroll/", choice)
       .then((res) => {
+        console.log(res.message);
         setIsFormSubmitting(false);
         alert("Enrolled Successfully!");
         Navigate("/schedule");
       })
       .catch((error) => {
         setIsFormSubmitting(false);
-        alert(error.response.data.message);
+        alert(error.res.message);
       });
   };
 
   return (
-    <div className="flex flex-col items-center justify-center ">
+    <div className="flex flex-col min-h-screen items-center justify-center ">
       <label
         for="courses"
         class="block mb-2 w-48 text-sm font-medium text-gray-900 dark:text-white"

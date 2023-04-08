@@ -2,10 +2,12 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const bodyParser = require("body-parser");
 const initializeDBConnection = require("./config/db.connect");
+const cors = require("cors");
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
@@ -21,6 +23,7 @@ app.get("/api", (req, res) => {
   });
 });
 
+app.use("/api/enroll", require("./controllers/EnrollController"));
 app.use("/api/schedule", require("./controllers/ScheduleController"));
 
 app.listen(PORT, () => {
