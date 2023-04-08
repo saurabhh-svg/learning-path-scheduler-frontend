@@ -21,6 +21,8 @@ app.get("/api", (req, res) => {
   });
 });
 
+app.use("/api/schedule", require("./controllers/ScheduleController"));
+
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
