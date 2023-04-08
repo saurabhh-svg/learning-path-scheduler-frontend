@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const EventSchema = new mongoose.Schema(
+const EnrollSchema = new mongoose.Schema(
   {
     course: {
       type: String,
@@ -17,6 +17,6 @@ const EventSchema = new mongoose.Schema(
   }
 );
 
-const Event = mongoose.model("Event", EventSchema);
+const Enroll = mongoose.model("Enroll", EnrollSchema);
 
-module.exports = Event;
+module.exports = Enroll;

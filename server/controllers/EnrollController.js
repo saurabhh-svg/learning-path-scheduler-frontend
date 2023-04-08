@@ -1,17 +1,17 @@
 const router = require("express").Router();
-const Event = require("../models/Event");
+const Enroll = require("../models/Enroll");
 const moment = require("moment");
 
 router.post("/enroll", async (req, res) => {
   const { course, hours, date } = req.body;
-  const newEvent = new Event({
+  const newEnroll = new Enroll({
     course,
     hours,
     date,
   });
   try {
-    const savedEvent = await newEvent.save();
-    res.status(200).json(savedEvent);
+    const savedEnroll = await newEnroll.save();
+    res.status(200).json(savedEnroll);
   } catch (error) {
     res.status(500).json(error);
   }
