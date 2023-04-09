@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Hrwise = require("./register");
 
 const EnrollSchema = new mongoose.Schema(
   {
@@ -10,6 +11,10 @@ const EnrollSchema = new mongoose.Schema(
     },
     startDate: {
       type: String,
+    },
+    schedule: {
+      ref: Hrwise,
+      type: mongoose.Schema.Types.ObjectId,
     },
   },
   {

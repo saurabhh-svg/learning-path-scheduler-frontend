@@ -8,6 +8,13 @@ router.post("/create-event", async (req, res) => {
   res.sendStatus(201);
 });
 
+/** schedule events according to choice made by user in enroll */
+router.get("/schedule", async (req, res) => {
+  const event = Event(req.body);
+  await event.save();
+  res.sendStatus(201);
+});
+
 router.get("/get-events", async (req, res) => {
   const events = await Event.find({
     start: {

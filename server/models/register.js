@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const RegisterSchema = new mongoose.Schema({
+const HrWiseSchema = new mongoose.Schema({
   hrsPerDay: {
     type: Number,
   },
@@ -20,6 +20,6 @@ const RegisterSchema = new mongoose.Schema({
   ],
 });
 
-const Register = mongoose.model("Register", RegisterSchema);
+const HrWise = mongoose.model("HrWise", HrWiseSchema);
 
-module.exports = Register;
+module.exports = HrWise;
