@@ -16,7 +16,6 @@ initializeDBConnection();
 
 // Routes
 app.use("/api/enroll", require("./controllers/EnrollController"));
-app.use("/api/schedule", require("./controllers/ScheduleController"));
 
 // Start the server
 app.listen(PORT, () => {

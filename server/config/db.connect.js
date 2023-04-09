@@ -48,7 +48,6 @@ const initializeDBConnection = async () => {
         currentHr = 0;
       }
     }
-    console.log("2hr course distribution created successfully!");
     scheduledCourses = { day: 1, courses: [] };
     currentHr = 0;
     currentCourse = 0;
@@ -67,7 +66,6 @@ const initializeDBConnection = async () => {
         currentHr = 0;
       }
     }
-    console.log("4hr course distribution created successfully!");
     scheduledCourses = { day: 1, courses: [] };
     currentHr = 0;
     currentCourse = 0;
@@ -87,11 +85,6 @@ const initializeDBConnection = async () => {
       }
     }
 
-    console.log("6hr course distribution created successfully!");
-
-    console.log(hrwise2.schedule.length);
-    console.log(hrwise4.schedule.length);
-    console.log(hrwise6.schedule.length);
     await hrwise2.save();
 
     await hrwise4.save();
