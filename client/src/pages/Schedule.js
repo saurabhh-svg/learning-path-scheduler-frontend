@@ -8,23 +8,13 @@ import moment from "moment";
 const Schedule = ({ events }) => {
   console.log(events);
   const startDate = events.date;
-  let offSet = 0,
-    flag = false;
+
   const eventArray = events.schedule.schedule.map((event) => {
     const tempEvent = event.courses.map((e) => {
       let day = event.day;
-      if (moment(startDate).add("days", day).format("dddd") === "Saturday") {
-        offSet += 2;
-        flag = true;
-      }
-      if (
-        moment(startDate).add("days", day).format("dddd") === "Sunday" &&
-        flag === false
-      )
-        offSet += 1;
-      day = day - 1 + offSet;
+      day = day - 1;
       return {
-        title: event.day + "" + e.title + " (" + e.duration + "minutes)",
+        title: e.title + " (" + e.duration + "minutes)",
         start: moment(startDate, "YYYY-MM-DD")
           .add("days", day)
           .format("YYYY-MM-DD"),
