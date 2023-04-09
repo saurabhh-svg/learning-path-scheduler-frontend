@@ -9,7 +9,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/enroll" element={<Enroll />} />
+          <Route path="/" element={<Enroll />} />
           <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </Router>
