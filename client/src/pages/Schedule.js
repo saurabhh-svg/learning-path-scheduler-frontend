@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import interactionPlugin from "@fullcalendar/interaction";
@@ -6,7 +6,6 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import moment from "moment";
 
 const Schedule = ({ events }) => {
-  const [eventsData, setEventsData] = useState([]);
   const startDate = events.date;
   const handleDateClick = (arg) => {
     console.log(arg.dateStr);
@@ -17,7 +16,7 @@ const Schedule = ({ events }) => {
       let day = event.day;
       day = day - 1;
       return {
-        title: e.title,
+        title: e.title + " (" + e.duration + "minutes)",
         start: moment(startDate, "YYYY-MM-DD")
           .add("days", day)
           .format("YYYY-MM-DD"),
@@ -28,9 +27,8 @@ const Schedule = ({ events }) => {
     });
     return tempEvent;
   });
-
   return (
-    <div>
+    <div className="mt-10 pt-10">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
@@ -40,12 +38,9 @@ const Schedule = ({ events }) => {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-        events={() => {
-          eventArray.map((event) => {
-            console.log(event);
-            return event;
-          });
-        }}
+        margin-top={"10%"}
+        height={"80vh"}
+        events={eventArray.flat()}
         dateClick={handleDateClick}
       />
     </div>

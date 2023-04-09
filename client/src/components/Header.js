@@ -5,7 +5,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 export default function Header() {
   return (
     <header>
-      <nav className="border-gray-200 px-4 lg:px-6 py-2.5 bg-gray-800 absolute w-full">
+      <nav className="border-gray-200 px-4 lg:px-6 py-2.5 bg-gray-800 absolute w-full top-0">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <div className="flex items-center">
             <img src={logo} className="mr-3 h-6 sm:h-9" alt="Scheduler Logo" />
