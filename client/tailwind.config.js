@@ -7,7 +7,12 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        "90vh": "90%",
+        "85vh": "85%",
+      },
+    },
   },
   plugins: [],
 };
