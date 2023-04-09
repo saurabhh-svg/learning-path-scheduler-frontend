@@ -1,52 +1,34 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import axios from "axios";
+import moment from "moment";
 
-const Schedule = () => {
+const Schedule = ({ events }) => {
+  const [eventsData, setEventsData] = useState([]);
+  const startDate = events.date;
   const handleDateClick = (arg) => {
     console.log(arg.dateStr);
     alert(arg.dateStr);
   };
+  const eventArray = events.schedule.schedule.map((event) => {
+    const tempEvent = event.courses.map((e) => {
+      let day = event.day;
+      day = day - 1;
+      return {
+        title: e.title,
+        start: moment(startDate, "YYYY-MM-DD")
+          .add("days", day)
+          .format("YYYY-MM-DD"),
+        end: moment(startDate, "YYYY-MM-DD")
+          .add("days", day)
+          .format("YYYY-MM-DD"),
+      };
+    });
+    return tempEvent;
+  });
 
-  const [events, setEvents] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { data } = axios.get("http://localhost:5001/api/schedule/schedule/");
-
-  // const getEvents = async () => {
-  //   setIsLoading(true);
-  //   axios
-  //     .get("http://localhost:5001/api/schedule/schedule/")
-  //     .then((res) => {
-  //       const data = res.json();
-  //       console.log(data);
-  //       setEvents(data);
-  //       setIsLoading(false);
-  //       alert("Enrolled Successfully!");
-  //     })
-  //     .catch((error) => {
-  //       setIsLoading(false);
-  //       alert(error.res.message);
-  //     });
-  // };
-
-  const eventsData = useMemo(() => {
-    return (
-      data &&
-      data[0].map(({ title, duration, type }) => {
-        return {
-          name: title.sdurationg(0, 3),
-          duration: duration,
-          type: type,
-        };
-      })
-    );
-  }, [data]);
-
-  if (isLoading) return <div>Loading...</div>;
   return (
     <div>
       <FullCalendar
@@ -58,9 +40,14 @@ const Schedule = () => {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
+        events={() => {
+          eventArray.map((event) => {
+            console.log(event);
+            return event;
+          });
+        }}
         dateClick={handleDateClick}
       />
-      {console.log(eventsData)}
     </div>
   );
 };

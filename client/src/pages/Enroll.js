@@ -2,12 +2,13 @@ import React from "react";
 import moment from "moment";
 import axios from "axios";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import Schedule from "./Schedule";
 
 const Enroll = () => {
   const [redirect, setRedirect] = useState(false);
   const [course, setCourse] = useState("java");
   const [hours, setHours] = useState(2);
+  const [events, setEvents] = useState([]);
   const [date] = useState(moment().format("YYYY-MM-DD"));
   const [isFormSubmitting, setIsFormSubmitting] = useState(false);
 
@@ -15,14 +16,14 @@ const Enroll = () => {
     event.preventDefault();
     setIsFormSubmitting(true);
 
-    const choice = new FormData();
-    choice.append("course", course);
-    choice.append("hours", hours);
-    choice.append("date", date);
-
     axios
-      .post("http://localhost:5001/api/enroll/enroll/", choice)
+      .post("http://localhost:5001/api/enroll/enroll/", {
+        course: course,
+        hours: hours,
+        date: date,
+      })
       .then((res) => {
+        setEvents(res.data);
         setIsFormSubmitting(false);
         alert("Enrolled Successfully!");
         setRedirect(true);
@@ -32,10 +33,9 @@ const Enroll = () => {
         alert(error.res.message);
       });
   };
-
+  if (redirect) return <Schedule events={events} />;
   return (
     <div className="flex bg-gray-400 flex-col h-screen items-center justify-center ">
-      {redirect && <Navigate to="/schedule" />}
       <h1 className="text-3xl font-bold text-gray-900 text-dark">
         Enroll in a Course !!
       </h1>
