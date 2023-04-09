@@ -17,11 +17,14 @@ const Enroll = () => {
     setIsFormSubmitting(true);
 
     axios
-      .post("http://localhost:5001/api/enroll/enroll/", {
-        course: course,
-        hours: hours,
-        date: date,
-      })
+      .post(
+        "https://learning-path-scheduler-backend-production.up.railway.app/api/enroll/enroll/",
+        {
+          course: course,
+          hours: hours,
+          date: date,
+        }
+      )
       .then((res) => {
         setEvents(res.data);
         setIsFormSubmitting(false);
