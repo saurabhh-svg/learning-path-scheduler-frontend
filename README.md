@@ -2,6 +2,8 @@
 A calendar schedule that takes in the learning path, and the hours a learner is willing to commit and populate the schedule accordingly (starting from the next day).
 
 
+https://user-images.githubusercontent.com/82569167/230773359-1087f3dc-4942-4d9a-99f9-9d6010863583.mov
+
 <img width="1440" alt="Screenshot 2023-04-09 at 5 51 06 PM" src="https://user-images.githubusercontent.com/82569167/230772628-a170d188-222f-432d-a8d0-38ba2a995f45.png">
 <img width="1440" alt="Screenshot 2023-04-09 at 6 00 52 PM" src="https://user-images.githubusercontent.com/82569167/230772631-51ab9756-00d9-4e86-9975-d6c3eefc50d0.png">
 <img width="1440" alt="Screenshot 2023-04-09 at 6 01 01 PM" src="https://user-images.githubusercontent.com/82569167/230772637-d8377f75-2308-4874-a9be-19cbccc60be1.png">
