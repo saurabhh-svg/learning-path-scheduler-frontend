@@ -9,7 +9,7 @@ const EnrollSchema = new mongoose.Schema(
     hours: {
       type: String,
     },
-    startDate: {
+    date: {
       type: String,
     },
     schedule: {
