@@ -8,7 +8,7 @@ const EnrollSchema = new mongoose.Schema(
     hours: {
       type: String,
     },
-    date: {
+    startDate: {
       type: String,
     },
   },
@@ -20,5 +20,3 @@ const EnrollSchema = new mongoose.Schema(
 const Enroll = mongoose.model("Enroll", EnrollSchema);
 
 module.exports = Enroll;
-
-

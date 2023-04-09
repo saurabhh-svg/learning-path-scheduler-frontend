@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Enroll = require("../models/Enroll");
+const Enroll = require("../models/enroll");
 const moment = require("moment");
 
 router.post("/enroll", async (req, res) => {
