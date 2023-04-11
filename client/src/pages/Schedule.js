@@ -6,21 +6,18 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import moment from "moment";
 
 const Schedule = ({ events }) => {
-  console.log(events);
-  const startDate = events.date;
+  const handleDateClick = (arg) => {
+    alert("Clicked on: " + arg.dateStr);
+    arg.dayEl.style.backgroundColor = "#800080";
+  };
 
   const eventArray = events.schedule.schedule.map((event) => {
     const tempEvent = event.courses.map((e) => {
-      let day = event.day;
-      day = day - 1;
       return {
-        title: e.title + " (" + e.duration + "minutes)",
-        start: moment(startDate, "YYYY-MM-DD")
-          .add("days", day)
-          .format("YYYY-MM-DD"),
-        end: moment(startDate, "YYYY-MM-DD")
-          .add("days", day)
-          .format("YYYY-MM-DD"),
+        title: event.day + " " + e.title + " (" + e.duration + "minutes)",
+        start: moment(event.date).format("YYYY-MM-DD"),
+        end: moment(event.date).format("YYYY-MM-DD"),
+        duration: e.duration,
       };
     });
     return tempEvent;
@@ -38,6 +35,7 @@ const Schedule = ({ events }) => {
         }}
         height={"80vh"}
         events={eventArray.flat()}
+        dateClick={handleDateClick}
       />
     </div>
   );
